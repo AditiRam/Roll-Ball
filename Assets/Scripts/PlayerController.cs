@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     public GameObject inGamePanel;
     public GameObject winPanel;
+    public GameObject losePanel;
     public TMP_Text scoreText;
     public TMP_Text timerText;
     public TMP_Text winTimeText;
@@ -36,6 +37,8 @@ public class PlayerController : MonoBehaviour
         inGamePanel.SetActive(true);
         //turn off our win panel
         winPanel.SetActive(false);
+        //turn off out lose panel 
+        losePanel.SetActive(false);
 
     }
     private void Update()
@@ -68,6 +71,11 @@ public class PlayerController : MonoBehaviour
             //Run the check pickups function
             CheckPickups();
         }
+        if (other.tag == "Obstacle")
+        {
+            //trigger loose panel player collides with obstacle
+            LoseGame(); 
+        }
     }
 
     void CheckPickups()
@@ -99,8 +107,30 @@ public class PlayerController : MonoBehaviour
         //set the velocity of the rigidbody to zero
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+    
 
     }
+    void LoseGame()
+    {
+        //set game over to true
+        gameOver = true; 
+        //stop the timer
+        timer.StopTimer();
+        //turn on out win panel
+        losePanel.SetActive(true);
+        //turn off our in game panel
+        inGamePanel.SetActive(false);
+        //Display the timer on the win time text
+        winTimeText.text = "your time was:" + timer.GetTime().ToString("F2"); 
+        print("Yay! You Win, Your time was: " + timer.GetTime());
+
+        //set the velocity of the rigidbody to zero
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+    }
+
+
     //Temporary
     public void RestartGame()
     {
