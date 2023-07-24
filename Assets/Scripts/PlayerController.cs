@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text timerText;
     public TMP_Text winTimeText;
+    public GameObject pausePanel;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -39,11 +41,19 @@ public class PlayerController : MonoBehaviour
         winPanel.SetActive(false);
         //turn off out lose panel 
         losePanel.SetActive(false);
+        //turn off the pause panel
+        pausePanel.SetActive(false);
+    
 
     }
     private void Update()
     {
         timerText.text = timer.GetTime().ToString("F2"); 
+
+         if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
 
     // Update is called once per frame
@@ -128,6 +138,22 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
+    }
+
+    public void TogglePause()
+    {//stop the timer
+        timer.StopTimer();
+        //turn on pause panel
+        pausePanel.SetActive(true);
+        //set the velocity of the rigidbody to zero
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+
+    }
+    public void ResumeGame()
+    {
+        pausePanel.SetActive(false);
     }
 
 
