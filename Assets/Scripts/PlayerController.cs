@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         //Get the number of pickups in out scene
         pickupCount = GameObject.FindGameObjectsWithTag("Pick up").Length;
         //Run the check pickups function
-        CheckPickups();
+        SetCountText();
         //Get the timer object and start the timer
         timer = FindObjectOfType<Timer>();
         timer.StartTimer();
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             //Decrement the pickup count
             pickupCount -= 1;
             //Run the check pickups function
-            CheckPickups();
+            SetCountText();
         }
         if (other.tag == "Obstacle")
         {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void CheckPickups()
+    void SetCountText()
     {
         //Display the amount of pickups left in our scene
         scoreText.text = "Pickups Left: " + pickupCount;

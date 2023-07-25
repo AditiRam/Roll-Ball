@@ -7,6 +7,8 @@ TagManager:
   - Collectible
   - Pick up
   - Obstacle
+  - Ground
+  - Wall
   layers:
   - Default
   - TransparentFX
