@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6826810803523611834}
   m_Layer: 0
   m_Name: OuterCorner
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
