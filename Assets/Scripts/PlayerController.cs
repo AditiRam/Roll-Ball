@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     //Controllers
     GameController gameController;
     private Timer timer;
+    public Timer speedRunTimer;
+   
+
 
     [Header("UI")]
     public GameObject inGamePanel;
@@ -56,6 +59,11 @@ public class PlayerController : MonoBehaviour
         originalColour = GetComponent<Renderer>().material.color;
 
         gameController = FindObjectOfType<GameController>();
+        speedRunTimer = FindObjectOfType<Timer>();
+        if (gameController.gameType == GameType.SpeedRun)
+        {
+
+        }
 
     
 

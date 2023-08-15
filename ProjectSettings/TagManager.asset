@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Wall
   - Powerup
+  - Teleporter
   layers:
   - Default
   - TransparentFX
